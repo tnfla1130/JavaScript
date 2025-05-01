@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function seasonFunc(){
+            let m = document.getElementById("month").value;
+            let p = document.getElementById("show");
+            switch(parseInt(m)){
+                case 3:case 4:case 5:
+                    p.innerText = m + "월은 봄입니다.";
+                case 6:case 7:case 8:case 9:
+                    p.innerText = m + "월은 여름입니다.";
+                case 10:
+                    p.innerText = m + "월은 가을입니다.";
+                case 11:case 12:case 1:case 2:
+                    p.innerText = m + "월은 겨울입니다.";
+                    break;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>조건문 - switch문</h2>
+    1년중 가낭 좋아하는 월은?
+    <input type="range" id="month" min="1" max="12" step="1">
+    <input type="button" value="어떤계절?" onclick="seasonFunc();">
+    <p id="show"></p>
+</body>
+</html>
