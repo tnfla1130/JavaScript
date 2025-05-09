@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J18CssControl01</title>
+    <script>
+        //전역변수
+        var pTag, pSize;
+        //이 문서의 로드가 완료된 후 익명함수를 실행한다. 
+        window.onload = function(){
+            //기사가 있는 p태그의 DOM요소를 얻어옴
+            pTag = document.getElementById("article");
+            //p태그에 적용된 폰트 크기를 읽어온 후 숫자로 변환한다.
+            pSize = parseInt(pTag.style.fontSize);
+        }
+        /*
+        JS에서 스타일을 적용하는 방법
+            HTML에서 스타일을 적용할 DOM요소를 얻어온다.
+            DOM변수에 style을 적용하고, 뒷 부분에 CSS속성을 추가한다.
+            color와 같은 경우는 그대로 사용하면 되고
+            background-color와 같은 경우에는 하이픈(-)을 제거한 후 첫 문자를
+            대문자로 변경한다.
+            Ex) DOM변수.style.color = 'red';
+                DOM변수.style.backgroundColor = 'blue';
+        */
+        function fnArticle(flag){
+            switch(flag){
+                /*
+                폰드의 크기, 마진, 패딩과 같이 숫자로 속성값을 지정해야 하는 경우에는
+                pt, px, em과 같은 단위를 반드시 추가해야한다. */
+            case "+":
+                pSize += 10;
+                pTag.style.fontSize = pSize+"px";
+                break;
+            case "-":
+                pSize -= 10;
+                pTag.style.fontSize = pSize+"px";
+                break;
+            case "R":
+                pTag.style.color = "red";
+                break;
+            case "G":
+                pTag.style.color = "green";
+                break;
+            case "B":
+                pTag.style.color = "blue";
+                break;
+            case "Bo":
+                pTag.style.fontWeight = "bold";
+                break;
+            case "No":
+                pTag.style.fontWeight = "normal";
+                break;
+            case "Ce":
+                pTag.style.textAlign = "conter";
+                break;
+            case "Le":
+                pTag.style.textAlign = "left";
+                break;
+            case "B_red":
+                pTag.style.backgroundColor = "red";
+                break;
+            case "B_silver":
+                pTag.style.backgroundColor = "silver";
+                break;
+            case "B_white":
+                pTag.style.backgroundColor = "white";
+                break;
+            default :
+                pTag.style.color = "black";
+            }
+        }
+        /*
+        퀴즈] 글꼴바꾸기 버튼을 계속 누를때마다 아래 5가지
+        폰트가 토글되어 적용될수 있도록 함수를 정의하시오.
+        글꼴 : [Verdana, 굴림체, 휴먼옛체, 궁서, Impact]
+        */
+       //토글을 위한 전역변수 생성
+        let fontToggle = 0;
+        const setFont = () => {
+            const fontArray = ['Verdana', '굴림체', '휴먼옛체', '궁서', 'Impact'];
+            console.log('fontToggle',fontToggle%5);
+            //p태그 부분에 스타일을 적용한다. 5로 나눈 나머지는 0~4사이가 된다.
+            pTag.style.fontFamily = fontArray[++fontToggle%5];
+        }
+    </script>
+</head>
+<body>
+    <h2>자바스크립트로 CSS제어하기</h2>
+    <input type="button" value="글꼴바꾸기" onclick="setFont();">
+    <fieldset>
+        <legend>신문기사</legend>
+        <button onclick="fnArticle('+');">+</button>
+        <button onclick="fnArticle('-');">-</button>
+        <button onclick="fnArticle('R');">Red</button>
+        <button onclick="fnArticle('G');">Green</button>
+        <button onclick="fnArticle('B');">Blue</button>
+        <button onclick="fnArticle('');">Black</button>
+        <button onclick="fnArticle('Bo');">볼드체</button>
+        <button onclick="fnArticle('No');">보통체</button>
+        <br>
+        <button onclick="fnArticle('Ce');">가운데정렬</button>
+        <button onclick="fnArticle('Le');">좌측정렬</button>
+        <button onclick="fnArticle('B_red');">배경색(red)</button>
+        <button onclick="fnArticle('B_silver');">배경색(silver)</button>
+        <button onclick="fnArticle('B_white');">배경색(white)</button>
+    </fieldset>
+    <p style="font-size: 12px;" id="article">
+        사람들의 내 내 봅니다. 까닭이요, 벌레는 나는 듯합니다. 
+        아무 우는 사람들의 잠, 다 별이 이름을 까닭입니다. 
+        소녀들의 새겨지는 않은 하늘에는 버리었습니다. 이름과, 하나의 벌써 토끼, 
+        새겨지는 별이 그리고 것은 없이 있습니다. 했던 위에 아름다운 덮어 밤을 
+        그러나 이름과 까닭이요, 봅니다. 이름자를 어머니, 위에 별 나의 것은 계절이 
+        버리었습니다. 
+    </p>
+</body>
+</html>

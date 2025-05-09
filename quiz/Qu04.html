@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>document.write()로 표만들기</h2>
+    <hr>
+    <table border="1">
+        <tr>
+            <td>n</td>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>n <sup>2</sup></td>
+            <td>0</td>
+            <td>1</td>
+            <td>4</td>
+            <td>9</td>
+            <td>16</td>
+            <td>25</td>
+            <td>36</td>
+            <td>49</td>
+            <td>64</td>
+            <td>81</td>
+        </tr>
+        
+    </table>
+
+    <script>
+        var str ="";
+        str = "<table border=\"1\">";
+        str += "<tr>";
+        str += "<td>n</td>";
+
+        for(var i=0;i<10;i++){
+            str+= "<td>"+i+"</td>";
+        }
+        str += "</tr>";
+        str += "<tr>";
+        str += "<td>n <sup>2</sup></td>";
+
+        for(var i=0; i<10;i++){
+            str +="<td>"+(i*i)+"</td>";
+        }
+        str += "</tr>";
+        document.write(str);
+    </script>
+    <script>
+        var str = "";
+
+        str = "<table border=\"1\">";
+        str += "  <tr>";
+        str += "    <td>n</td>";
+        for(var i=0 ; i<=9 ; i++){
+            str += "<td>"+i+"</td>";
+        }
+        str += "  </tr>";
+        /////////////////////////////////////////////////////
+        str += "  <tr>";
+        str += "    <td>n<sup>2</sup></td>";
+        for(var i=0 ; i<=9 ; i++){
+            str += "<td>"+(i*i)+"</td>";
+        }
+        str += "  </tr>";
+        str += "</table>";
+        document.write(str);
+    </script>
+</body>
+</html>
